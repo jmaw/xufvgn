@@ -1,5 +1,12 @@
 <h2>Products</h2>
 
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input id="info" type="text" formControlName="info" />&nbsp;
+    <button class="button" type="submit">Search</button>
+  </div>
+</form>
+
 <div *ngFor="let product of products">
   <h3>
     <a
