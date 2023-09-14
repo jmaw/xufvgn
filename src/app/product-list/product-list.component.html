@@ -2,10 +2,15 @@
 
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
   <div>
-    <input id="info" type="text" formControlName="info" />&nbsp;
-    <button class="button" type="submit">Search</button>
+    <input id="info" type="text" formControlName="info" />
+    <button class="ml-1 button" type="submit">Search</button>
+    <button class="ml-1 button" type="button" (click)="onClear()">Clear</button>
   </div>
 </form>
+
+<p *ngIf="searchForm.value.info">Searching {{ searchForm.value.info }}...</p>
+
+<hr />
 
 <div *ngFor="let product of products">
   <h3>

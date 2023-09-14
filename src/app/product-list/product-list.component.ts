@@ -14,9 +14,7 @@ export class ProductListComponent {
     info: '',
   });
 
-  constructor(private formBuilder: FormBuilder) {
-    
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   share() {
     window.alert('The product has been shared!');
@@ -29,15 +27,19 @@ export class ProductListComponent {
   onSubmit(): void {
     // Process checkout data here
     let srch: string = this.searchForm.value.info || '';
-    if (srch.trim().length == 0) {
+    srch = srch.trim().toLowerCase();
+    if (srch.length == 0) {
       this.products = [...products];
     } else {
       this.products = this.products.filter((product) => {
-        return product.name.indexOf(srch) > -1;
+        return product.name.toLowerCase().indexOf(srch) > -1;
       });
     }
+  }
 
-    //this.searchForm.reset();
+  onClear(): void {
+    this.products = [...products];
+    this.searchForm.reset();
   }
 }
 
